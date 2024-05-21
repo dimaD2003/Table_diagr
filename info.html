@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./img/favicon/planet-earth-geography-svgrepo-com.svg" type="svg+xml">
+    <link rel="stylesheet" href="./src/table.css">
+    <title>Document</title>
+    <script src="http://d3js.org/d3.v7.min.js"></script>
+</head>
+<body bgcolor="#e6f1f4">
+
+    <!-- ===описание===== -->
+    <font face="Arial">
+        <div class="menu_logo">
+            <a href="./index.html">  <img src="./img/favicon/planet-earth-geography-svgrepo-com.svg" alt="dwdwd" width="50px" align="left"> </a>
+        </div>
+    <h1 align="center">Туристический рейтинг зарубежных стран</h1>
+    <p align="center"> <small> <sup> <i> (Оценочные результаты получены на остновании социологических исследовании международной ассоциации туристического маркетинга)</i> </small></sup>  </p>
+    <hr width="80%" color="lightgray">
+<!-- ===график======== -->
+    <div class="forma">
+        <div class="forma_graph">
+            <details class="content__graph">
+            <p><summary>График</summary></p>
+        <form id="graph_form">
+    <div class="content__graph__ox">
+            
+        Значение  OX:<br>
+        <!-- <label><input type="radio" name="graph" value="attacktype">Количество достопримечаетльностей</label><br> -->
+        <!-- <label><input type="radio" name="graph" value="attackdelay">Доступность цен</label><br> -->
+        <label><input type="radio" id="Страна" name="ox" value="Страна">страна</label><br>
+        <label><input type="radio" id="Материк" name="ox" value="Материк">Материк</label><br>
+        <!-- <label><input type="radio" name="graph" value="attackdelay">Безопасность</label><br> -->
+        <!-- <label><input type="radio" name="graph" value="attackdelay">Количество отелей</label><br> -->
+        </p>
+    </div>
+        <p>
+        Результат:<br>
+        <label><input type="checkbox" name="oy" id="maxtourists" value="Численность туристов" onclick="changeState(this.form, value)"> минимум туристов</label><br>
+        <label><input type="checkbox" name="oy" id="mintourists" value="Численность туристов" onclick="changeState(this.form, value)"> максимум туристов</label><br>
+        <label><input type="checkbox" name="oy" id="maxtransport" value="Транспорт" onclick="changeState(this.form, value)" >максимальное качество транстпорта</label><br>
+        <label><input type="checkbox" name="oy" id="mintransport" value="Транспорт" onclick="changeState(this.form, value)" >минимальное качество транспорта</label><br>
+       <label><input type="checkbox" name="oy" id="maxprice" value="Доступность цен" onclick="changeState(this.form, value)" >минимальный уровень цен</label><br>
+        <label><input type="checkbox" name="oy" id="minprive" value="Доступность цен" onclick="changeState(this.form, value)" >мaксимальный  уровень цен</label><br>
+        </p>
+        <p>
+        <input type="button" onclick="drawGraph(this.form)" value="Построить">
+        <input type="reset" value="Сбросить настройки">
+        </p>
+        </form>
+        <svg height="10"></svg>
+        </details>
+        </div>
+        
+        <!-- ===фильтр======== -->
+        <div class="forma_filtr">
+            <p>
+                <details>
+                    <p><summary>Фильтр</summary></p>
+                <form id="filter">
+                    <p>
+                    <label>Страна: <input type="text" id="country"></label><br>
+                    <label>Численность туристов: от <input type="number" id="touristsFrom" min="0" max="10"> до <input type="number"  id="touristsTo"    min="0" max="10"  ></label><br>
+                     <label>Безопасность: от <input type="number" id="safetyFrom" min="0" max="10"> до <input type="number"  id="safetyTo"    min="0" max="10"  ></label><br>
+                    <label>Транспорт: от <input type="number" id="drivetyFrom" min="0" max="10"> до <input type="number"  id="driveTo"    min="0" max="10"  ></label><br>
+                    <label>Доступность цен: от <input type="number" id="PriceFrom" min="0" max="10"> до <input type="number"   id="PriceTo"   min="0" max="10"  ></label><br>
+                    <label>Уровень сервиса: от <input type="number" id="ServiceFrom" min="0" max="10"> до <input type="number"  id="ServiceTo"    min="0" max="10"  ></label><br>
+                    </p>
+                    <p>
+                    <input type="button" value="Найти" id="search">
+                    <input type="reset" value="Сбросить фильтр" id="clearfilter">
+                    </p>
+                </form>
+                </details>
+            </p>
+        </div>
+<!-- ===СОРТИРВКА======== -->
+        <div id="forma_sort">
+            <p>
+                <details>
+                    <summary>Сортировка</summary>
+                <form id="sort">
+                    <p>Первый уровень:
+                    <select id="fieldFirst">
+                        <!-- <th>Страна</th>
+                        <th>Численность туристов <i> <small>(за год)</small></i></th>
+                        <th>Безопасность</th>
+                        <th>Транспорт</th>
+                        <th>Доступность цен</th>
+                        <th>Уровень сервиса</th>
+
+                        <option>Страна</option>
+                        <option>Численность туристов</option> 
+                        <option>Безопасность</option>
+                        <option>Транспорт</option>
+                        <option>Доступность цен</option> -->
+                        
+                       
+                        <!-- <option>Итоговый индекс туристическая привелкательность</option>
+                        <option>Туристическая инфраструктура</option>
+                        <option>Уровень сервиса</option> -->
+                        
+                       
+                    </select> по убыванию? <input type="checkbox" id="fieldFirstDesc" />
+                    <p>Второй уровень:
+                    <select id="fieldSecond">
+                        <!-- <option>По возрастанию</option>
+                        <option>По убыванию</option>
+                    </select>
+                    </p>
+                    <p>Второй уровень:
+                        <select>
+                            <option>Страна</option>
+                            <option>Численность туристов</option> 
+                            <option>Безопасность</option>
+                            <option>Транспорт</option>
+                            <option>Доступность цен</option>
+                    
+                        </select>
+                        <select>
+                            <option>По возрастанию</option>
+                            <option>По убыванию</option> -->
+                        </select> по убыванию? <input type="checkbox" id="fieldSecondDesc" />
+                    <!-- </p> -->
+                    <p>Третий уровень:
+                    <select id="fieldThird"> 
+                        <!-- <option>Страна</option>
+                        <option>Численность туристов</option> 
+                        <option>Безопасность</option>
+                        <option>Транспорт</option>
+                        <option>Доступность цен</option>
+                    </select>
+                    <select>
+                        <option>По возрастанию</option>
+                        <option>По убыванию</option> -->
+                    </select> по убыванию? <input type="checkbox" id="fieldThirdDesc" />
+                    </p>
+                    <p>
+                        <input type="button" id="btnSort" value="Сортировать">
+                        <input type="reset" id="Clear_Sort_btnf" value="Сбросить настройки">
+                    </p>
+                </form>
+                </details>
+            </p>
+            <p>
+        </div>
+
+
+    </div>
+
+
+<!-- =======ТАБЛИЦА======== -->
+    <div class="list_table" >
+        
+        <table id="list" align="center" border="2" cellspacing="0" cellpadding="5px">
+          <!-- <caption align="left" ><small><i>Текст-подпись из caption</i></small></caption>  
+          <thead>
+                <tr align="center">
+                    <th>Страна</th>
+                    <th>Численность туристов <i> <small>(за год)</small></i></th>
+                    <th>Число культурных объектов</th>
+                    <th>Доступность цен</th>
+                    <th>Транспорт</th>
+                    <th>Безопасность</th>
+                    <th bgcolor="#E0FFED">Итоговый индекс туристическая привелкательности</th>
+                    <th bgcolor="#E0FFED">Уровень сервиса</th>
+                    <th bgcolor="#E0FFED">Туристическая инфраструктура</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr align="center">
+                    <td>Албания</td>
+                    <td>123 000</td>
+                    <td>33</td>
+                    <td>9.5</td>
+                    <td>6.1</td>
+                    <td>8</td>
+                    <td>8.632</td>
+                    <td>8.632</td>
+                    <td>8.632</td>
+                </tr>
+                
+            </tbody> -->
+        </table>
+
+    </div>
+
+
+
+
+    </font>
+
+    <script src="./data.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>

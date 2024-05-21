@@ -1,0 +1,180 @@
+.container{
+   border: 1px solid black;
+    margin: auto;
+    width: 80%;
+}
+
+a{
+    text-decoration:  none;
+    font-size:1.5vw;
+}
+
+
+
+
+
+
+
+.menu{
+    margin: auto;
+    width: 90%;
+    margin: 0px 50px;
+}
+
+.menu_logo{
+    font-size: 3vw;
+    padding-top: 20px;
+    display: inline-block;
+    width: 33%;
+    height:4rem;
+    text-align: center;
+    background-color: #77636392;;
+}
+
+.menu_info{
+    text-align: right;
+    background-color: #77636392;
+    height: 5em;
+    overflow: hidden;
+    
+}
+.menu_info a{
+float: right;
+text-align: left;
+width: 12%;
+padding: 5px;
+margin: 1.2vw;
+color: aliceblue;
+background-color: #605757;
+}
+.menu_info .active a{
+    background-color: #2b2727;
+    height: 100px;
+}
+.contant {
+}
+.contant_descriptoin {
+}
+.contant_markers {
+}
+.contant_partners {
+
+   overflow: hidden;
+    margin: 0px 50px;
+}
+.contant_partners_item{
+    float: left;
+    width: 18%;
+    height: 12rem;
+    
+}
+.contant_partners_item img {
+  
+}
+/* 121 10/30 */
+.contant_partners_item:nth-child(1) {
+    
+   
+    background-image: url("../img/Partners/24.jpg");
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+
+}
+.contant_partners_item:nth-child(2) {
+    width: 31%;
+    background-image: url("../img/Partners/zogby-international-companies-photo-1.jpg");
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+
+}
+.contant_partners_item:nth-child(3) {
+    
+    width: 31%;
+    background-image: url("../img/Partners/23.jpg");
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+
+}
+.contant_partners_item:nth-child(4) {
+    
+   
+    background-image: url("../img/Partners/22.jpg");
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+
+}
+
+
+
+.contant h3{
+    font-size: 1.5vw;
+}
+
+.contant_top{
+    
+    overflow: hidden;
+    margin: 10px 50px;
+    
+}
+.contant_top_item{
+    
+    float:left ;
+    width: 32%;
+     text-align: center;
+     background-color: rgba(193, 188, 188, 0.241);
+     max-height: 600px;
+     overflow: hidden;
+     display: -webkit-box;
+  -webkit-line-clamp: 24;
+  -webkit-box-orient: vertical;
+     
+    
+    
+    
+    /* border:0.5px solid black ; */
+}
+
+.contant_top_item:nth-child(2){
+    margin: 0px 2px;
+}
+
+
+.contant_top_item img {
+    margin: 20px auto;
+    min-width: 80px;
+    max-height: 50px;
+    border:1px solid rgba(118, 115, 115, 0.384);
+    display: block;
+}
+
+.contant_top_item_dscr{
+    text-align: justify;
+    padding: 0 20px;
+
+}
+
+
+
+
+.footer{
+    overflow: hidden;
+    background-color: #808080 ;
+    font-weight:bold;
+    font-size: 1vw;
+
+}
+
+.footer_item{
+    float: left;
+    margin: 0px 20px;
+    
+}
+.call{
+    float: right;
+   
+}
+.call img{
+   
+    padding:0px  5px;
+   
+}
